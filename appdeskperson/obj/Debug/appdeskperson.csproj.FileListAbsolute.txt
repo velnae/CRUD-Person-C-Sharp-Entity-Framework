@@ -129,3 +129,4 @@ C:\Users\emerson\source\repos\appdeskperson\appdeskperson\obj\Debug\appdeskperso
 C:\Users\emerson\source\repos\appdeskperson\appdeskperson\obj\Debug\appdeskperson.csproj.CopyComplete
 C:\Users\emerson\source\repos\appdeskperson\appdeskperson\obj\Debug\appdeskperson.exe
 C:\Users\emerson\source\repos\appdeskperson\appdeskperson\obj\Debug\appdeskperson.pdb
+C:\Users\emerson\source\repos\appdeskperson\appdeskperson\obj\Debug\appdeskperson.PresentationLayer.MDIParent.resources

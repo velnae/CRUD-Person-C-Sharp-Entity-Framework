@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\PresentationLayer"
   ],
+  "SelectedNode": "\\PresentationLayer\\FrmPerson.Designer.cs",
   "PreviewInSolutionExplorer": false
 }
