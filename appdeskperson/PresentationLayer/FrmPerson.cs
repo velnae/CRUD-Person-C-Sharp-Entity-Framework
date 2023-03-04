@@ -19,7 +19,7 @@ namespace appdeskperson.PresentationLayer
 
         private void dgvPerson_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            new FrmPersonLogic().dgvPerson_MouseDoubleClick(dgvPerson, txtIdPerson, txtDni, txtFirstName, txtSurName, dateBirthDate);
+            new FrmPersonLogic().dgvPerson_MouseDoubleClick(dgvPerson, txtIdPerson, txtDni, txtFirstName, txtSurName, dateBirthDate, txtAddressN);
         }
         private void dgvPerson_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -27,12 +27,12 @@ namespace appdeskperson.PresentationLayer
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            new FrmPersonLogic().btnDelete_Click(dgvPerson, txtIdPerson, txtDni, txtFirstName, txtSurName, dateBirthDate);
+            new FrmPersonLogic().btnDelete_Click(dgvPerson, txtIdPerson, txtDni, txtFirstName, txtSurName, dateBirthDate, txtAddressN);
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            new FrmPersonLogic().btnInsert_Click(txtIdPerson, txtDni, txtFirstName, txtSurName, dateBirthDate, dgvPerson);
+            new FrmPersonLogic().btnInsert_Click(txtIdPerson, txtDni, txtFirstName, txtSurName, dateBirthDate, txtAddressN, dgvPerson);
         }
 
         private void FrmPerson_Load(object sender, EventArgs e)
@@ -57,6 +57,11 @@ namespace appdeskperson.PresentationLayer
         private void dgvPersonJ_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             new FrmPersonJuridicaLogic().dgvPerson_MouseDoubleClick(dgvPersonJ, txtIdPerson, txtRuc, txtRazonSocial, txtAddressJ);
+        }
+
+        private void btnDeleteJ_Click(object sender, EventArgs e)
+        {
+            new FrmPersonJuridicaLogic().btnDelete_Click(dgvPersonJ, txtIdPersonJ, txtRuc, txtRazonSocial, txtAddressJ);
         }
     }
 }

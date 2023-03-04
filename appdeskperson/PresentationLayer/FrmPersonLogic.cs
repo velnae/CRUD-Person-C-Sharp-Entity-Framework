@@ -10,7 +10,7 @@ namespace appdeskperson.PresentationLayer
     public class FrmPersonLogic
     {
 
-        public void dgvPerson_MouseDoubleClick(DataGridView dgvPerson, TextBox txtIdPerson, TextBox txtDni, TextBox txtFirstName, TextBox txtSurName, DateTimePicker dateBirthDate)
+        public void dgvPerson_MouseDoubleClick(DataGridView dgvPerson, TextBox txtIdPerson, TextBox txtDni, TextBox txtFirstName, TextBox txtSurName, DateTimePicker dateBirthDate, TextBox txtAddressN)
         {
             if (dgvPerson.CurrentRow == null)
             {
@@ -22,10 +22,11 @@ namespace appdeskperson.PresentationLayer
             txtFirstName.Text = dgvPerson.CurrentRow.Cells["firstName"].Value.ToString();
             txtSurName.Text = dgvPerson.CurrentRow.Cells["surName"].Value.ToString();
             dateBirthDate.Value= Convert.ToDateTime(dgvPerson.CurrentRow.Cells["birthDate"].Value.ToString());
+            txtAddressN.Text = dgvPerson.CurrentRow.Cells["address"].Value.ToString();
 
         }
 
-        public void btnDelete_Click(DataGridView dgvPerson, TextBox txtIdPerson, TextBox txtDni, TextBox txtFirstName, TextBox txtSurName, DateTimePicker dateBirthDate)
+        public void btnDelete_Click(DataGridView dgvPerson, TextBox txtIdPerson, TextBox txtDni, TextBox txtFirstName, TextBox txtSurName, DateTimePicker dateBirthDate, TextBox txtAddressN)
         {
             if (dgvPerson.CurrentRow == null)
             {
@@ -39,7 +40,7 @@ namespace appdeskperson.PresentationLayer
             if (new BusinessPersonNatural().delete(dtoPerson) > 0)
             {
                 showListPerson(dgvPerson);
-                CleanForm(txtIdPerson, txtDni, txtFirstName, txtSurName, dateBirthDate);
+                CleanForm(txtIdPerson, txtDni, txtFirstName, txtSurName, dateBirthDate, txtAddressN);
                 MessageBox.Show("Registro eliminado correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 return;
@@ -48,7 +49,7 @@ namespace appdeskperson.PresentationLayer
             MessageBox.Show("No se pudo eliminar el registro.", "Error Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void btnInsert_Click(TextBox txtIdPerson, TextBox txtDni, TextBox txtFirstName, TextBox txtSurName, DateTimePicker dateBirthDate, DataGridView dgvPerson) 
+        public void btnInsert_Click(TextBox txtIdPerson, TextBox txtDni, TextBox txtFirstName, TextBox txtSurName, DateTimePicker dateBirthDate, TextBox txtAddressN, DataGridView dgvPerson) 
         {
             if (!validateData(txtDni, txtFirstName, txtSurName))
                 return;
@@ -62,13 +63,14 @@ namespace appdeskperson.PresentationLayer
             dtoPerson.firstName = txtFirstName.Text;
             dtoPerson.surName = txtSurName.Text;
             dtoPerson.birthDate = dateBirthDate.Value;
+            dtoPerson.address = txtAddressN.Text;
 
             if (insert)
             {
                 if (new BusinessPersonNatural().insert(dtoPerson) > 0)
                 {
                     showListPerson(dgvPerson);
-                    CleanForm(txtIdPerson, txtDni, txtFirstName, txtSurName, dateBirthDate);
+                    CleanForm(txtIdPerson, txtDni, txtFirstName, txtSurName, dateBirthDate, txtAddressN);
                     MessageBox.Show("Registro realizado correctamente.", "Guardo con exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     return;
@@ -81,7 +83,7 @@ namespace appdeskperson.PresentationLayer
                 if (new BusinessPersonNatural().update(dtoPerson) > 0)
                 {
                     showListPerson(dgvPerson);
-                    CleanForm(txtIdPerson, txtDni, txtFirstName, txtSurName, dateBirthDate);
+                    CleanForm(txtIdPerson, txtDni, txtFirstName, txtSurName, dateBirthDate, txtAddressN);
                     MessageBox.Show("La actualización se realizo correctamente.", "Actulzado con exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     return;
@@ -111,6 +113,7 @@ namespace appdeskperson.PresentationLayer
                 dgvPerson.Rows[i].Cells["surName"].Value = listDtoPerson[i].surName;
                 dgvPerson.Rows[i].Cells["yearOld"].Value = listDtoPerson[i].yearOld;
                 dgvPerson.Rows[i].Cells["birthDate"].Value = listDtoPerson[i].birthDate;
+                dgvPerson.Rows[i].Cells["address"].Value = listDtoPerson[i].address;
             }
         }
 
@@ -140,12 +143,13 @@ namespace appdeskperson.PresentationLayer
             return true;
         }
 
-        private void CleanForm(TextBox txtIdPerson, TextBox txtDni, TextBox txtFirstName, TextBox txtSurName, DateTimePicker dateBirthDate)
+        private void CleanForm(TextBox txtIdPerson, TextBox txtDni, TextBox txtFirstName, TextBox txtSurName, DateTimePicker dateBirthDate, TextBox txtAddressN)
         {
             txtIdPerson.Text = "";
             txtDni.Text = "";
             txtFirstName.Text = "";
             txtSurName.Text = "";
+            txtAddressN.Text = "";
             dateBirthDate.Value = DateTime.Now;
         }
     }

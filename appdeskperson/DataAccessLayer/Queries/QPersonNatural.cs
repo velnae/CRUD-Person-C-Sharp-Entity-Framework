@@ -18,6 +18,7 @@ namespace appdeskperson.DataAccessLayer.Queries
                 person.dni = dtoPerson.dni;
                 person.firstName = dtoPerson.firstName;
                 person.surName = dtoPerson.surName;
+                person.address = dtoPerson.address;
                 person.birthDate = dtoPerson.birthDate;
 
                 dbc.PersonsNatural.Add(person);
@@ -52,6 +53,7 @@ namespace appdeskperson.DataAccessLayer.Queries
                 person.firstName = dtoPerson.firstName;
                 person.surName = dtoPerson.surName;
                 person.birthDate = dtoPerson.birthDate;
+                person.address = dtoPerson.address;
 
                 dbc.PersonsNatural.Add(person);
 
@@ -75,6 +77,7 @@ namespace appdeskperson.DataAccessLayer.Queries
                     dtoPerson.dni = item.dni;
                     dtoPerson.firstName = item.firstName;
                     dtoPerson.surName = item.surName;
+                    dtoPerson.address = item.address;
                     dtoPerson.birthDate = item.birthDate;
 
                     listDtoPerson.Add(dtoPerson);

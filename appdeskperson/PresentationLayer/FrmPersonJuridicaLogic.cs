@@ -24,7 +24,7 @@ namespace appdeskperson.PresentationLayer
 
         }
 
-        public void btnDelete_Click(DataGridView dgvPersonj, TextBox txtIdPerson, TextBox txtRuc, TextBox txtRazonSocial, TextBox txtAddressJ, DateTimePicker dateBirthDate)
+        public void btnDelete_Click(DataGridView dgvPersonj, TextBox txtIdPerson, TextBox txtRuc, TextBox txtRazonSocial, TextBox txtAddressJ)
         {
             if (dgvPersonj.CurrentRow == null)
             {
@@ -33,7 +33,7 @@ namespace appdeskperson.PresentationLayer
             }
 
             DtoPersonJuridica dtoPerson = new DtoPersonJuridica();
-            dtoPerson.idPerson = dgvPersonj.CurrentRow.Cells["IdPerson"].Value.ToString();
+            dtoPerson.idPerson = dgvPersonj.CurrentRow.Cells["IdPersonJ"].Value.ToString();
 
             if (new BusinessPersonJuridica().delete(dtoPerson) > 0)
             {

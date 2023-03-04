@@ -37,12 +37,6 @@
             this.txtIdPerson = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.dgvPerson = new System.Windows.Forms.DataGridView();
-            this.idPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.surName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yearOld = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.birthDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnInsert = new System.Windows.Forms.Button();
             this.dateBirthDate = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -56,7 +50,7 @@
             this.txtAddressJ = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtIdPersonJ = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDeleteJ = new System.Windows.Forms.Button();
             this.dgvPersonJ = new System.Windows.Forms.DataGridView();
             this.btnInsertJ = new System.Windows.Forms.Button();
             this.txtRazonSocial = new System.Windows.Forms.TextBox();
@@ -67,6 +61,13 @@
             this.ruc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.razonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addressJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.surName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yearOld = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.birthDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPersonNatural.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPerson)).BeginInit();
@@ -166,6 +167,7 @@
             this.firstName,
             this.surName,
             this.yearOld,
+            this.address,
             this.birthDate});
             this.dgvPerson.Location = new System.Drawing.Point(17, 90);
             this.dgvPerson.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -179,55 +181,6 @@
             this.dgvPerson.Size = new System.Drawing.Size(681, 243);
             this.dgvPerson.TabIndex = 22;
             this.dgvPerson.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPerson_CellContentDoubleClick);
-            // 
-            // idPerson
-            // 
-            this.idPerson.HeaderText = "Id";
-            this.idPerson.MinimumWidth = 8;
-            this.idPerson.Name = "idPerson";
-            this.idPerson.ReadOnly = true;
-            this.idPerson.Visible = false;
-            this.idPerson.Width = 150;
-            // 
-            // dni
-            // 
-            this.dni.HeaderText = "DNI";
-            this.dni.MinimumWidth = 6;
-            this.dni.Name = "dni";
-            this.dni.ReadOnly = true;
-            this.dni.Width = 125;
-            // 
-            // firstName
-            // 
-            this.firstName.HeaderText = "Nombre";
-            this.firstName.MinimumWidth = 6;
-            this.firstName.Name = "firstName";
-            this.firstName.ReadOnly = true;
-            this.firstName.Width = 125;
-            // 
-            // surName
-            // 
-            this.surName.HeaderText = "Apellido";
-            this.surName.MinimumWidth = 6;
-            this.surName.Name = "surName";
-            this.surName.ReadOnly = true;
-            this.surName.Width = 125;
-            // 
-            // yearOld
-            // 
-            this.yearOld.HeaderText = "Edad";
-            this.yearOld.MinimumWidth = 6;
-            this.yearOld.Name = "yearOld";
-            this.yearOld.ReadOnly = true;
-            this.yearOld.Width = 125;
-            // 
-            // birthDate
-            // 
-            this.birthDate.HeaderText = "Fecha nacimiento";
-            this.birthDate.MinimumWidth = 6;
-            this.birthDate.Name = "birthDate";
-            this.birthDate.ReadOnly = true;
-            this.birthDate.Width = 125;
             // 
             // btnInsert
             // 
@@ -320,7 +273,7 @@
             this.tabPersonJuridica.Controls.Add(this.txtAddressJ);
             this.tabPersonJuridica.Controls.Add(this.label7);
             this.tabPersonJuridica.Controls.Add(this.txtIdPersonJ);
-            this.tabPersonJuridica.Controls.Add(this.button1);
+            this.tabPersonJuridica.Controls.Add(this.btnDeleteJ);
             this.tabPersonJuridica.Controls.Add(this.dgvPersonJ);
             this.tabPersonJuridica.Controls.Add(this.btnInsertJ);
             this.tabPersonJuridica.Controls.Add(this.txtRazonSocial);
@@ -364,15 +317,16 @@
             this.txtIdPersonJ.TabIndex = 32;
             this.txtIdPersonJ.Visible = false;
             // 
-            // button1
+            // btnDeleteJ
             // 
-            this.button1.Location = new System.Drawing.Point(547, 336);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(146, 27);
-            this.button1.TabIndex = 31;
-            this.button1.Text = "Eliminar registro selec.";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnDeleteJ.Location = new System.Drawing.Point(547, 336);
+            this.btnDeleteJ.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnDeleteJ.Name = "btnDeleteJ";
+            this.btnDeleteJ.Size = new System.Drawing.Size(146, 27);
+            this.btnDeleteJ.TabIndex = 31;
+            this.btnDeleteJ.Text = "Eliminar registro selec.";
+            this.btnDeleteJ.UseVisualStyleBackColor = true;
+            this.btnDeleteJ.Click += new System.EventHandler(this.btnDeleteJ_Click);
             // 
             // dgvPersonJ
             // 
@@ -482,6 +436,61 @@
             this.addressJ.ReadOnly = true;
             this.addressJ.Width = 125;
             // 
+            // idPerson
+            // 
+            this.idPerson.HeaderText = "Id";
+            this.idPerson.MinimumWidth = 8;
+            this.idPerson.Name = "idPerson";
+            this.idPerson.ReadOnly = true;
+            this.idPerson.Visible = false;
+            this.idPerson.Width = 150;
+            // 
+            // dni
+            // 
+            this.dni.HeaderText = "DNI";
+            this.dni.MinimumWidth = 6;
+            this.dni.Name = "dni";
+            this.dni.ReadOnly = true;
+            this.dni.Width = 125;
+            // 
+            // firstName
+            // 
+            this.firstName.HeaderText = "Nombre";
+            this.firstName.MinimumWidth = 6;
+            this.firstName.Name = "firstName";
+            this.firstName.ReadOnly = true;
+            this.firstName.Width = 125;
+            // 
+            // surName
+            // 
+            this.surName.HeaderText = "Apellido";
+            this.surName.MinimumWidth = 6;
+            this.surName.Name = "surName";
+            this.surName.ReadOnly = true;
+            this.surName.Width = 125;
+            // 
+            // yearOld
+            // 
+            this.yearOld.HeaderText = "Edad";
+            this.yearOld.MinimumWidth = 6;
+            this.yearOld.Name = "yearOld";
+            this.yearOld.ReadOnly = true;
+            this.yearOld.Width = 125;
+            // 
+            // address
+            // 
+            this.address.HeaderText = "Direccion";
+            this.address.Name = "address";
+            this.address.ReadOnly = true;
+            // 
+            // birthDate
+            // 
+            this.birthDate.HeaderText = "Fecha nacimiento";
+            this.birthDate.MinimumWidth = 6;
+            this.birthDate.Name = "birthDate";
+            this.birthDate.ReadOnly = true;
+            this.birthDate.Width = 125;
+            // 
             // FrmPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -511,12 +520,6 @@
         private System.Windows.Forms.TextBox txtIdPerson;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DataGridView dgvPerson;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idPerson;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dni;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn surName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn yearOld;
-        private System.Windows.Forms.DataGridViewTextBoxColumn birthDate;
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.DateTimePicker dateBirthDate;
         private System.Windows.Forms.Label label4;
@@ -528,7 +531,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPersonJuridica;
         private System.Windows.Forms.TextBox txtIdPersonJ;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDeleteJ;
         private System.Windows.Forms.DataGridView dgvPersonJ;
         private System.Windows.Forms.Button btnInsertJ;
         private System.Windows.Forms.TextBox txtRazonSocial;
@@ -543,5 +546,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ruc;
         private System.Windows.Forms.DataGridViewTextBoxColumn razonSocial;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressJ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idPerson;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dni;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn surName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn yearOld;
+        private System.Windows.Forms.DataGridViewTextBoxColumn address;
+        private System.Windows.Forms.DataGridViewTextBoxColumn birthDate;
     }
 }
