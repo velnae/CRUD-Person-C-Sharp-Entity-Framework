@@ -32,7 +32,7 @@ namespace appdeskperson.PresentationLayer
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            new FrmPersonLogic().btnInsert_Click(txtIdPerson, txtDni, txtFirstName, txtSurName, dateBirthDate, txtAddressN, dgvPerson);
+            new FrmPersonLogic().btnInsert_Click(txtIdPerson, txtDni, erpDni, txtFirstName, erpFirstName, txtSurName, erpSurName, dateBirthDate, txtAddressN, dgvPerson);
         }
 
         private void FrmPerson_Load(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace appdeskperson.PresentationLayer
         #region Persona juridica
         private void btnInsertJ_Click(object sender, EventArgs e)
         {
-            new FrmPersonJuridicaLogic().btnInsert_Click(txtIdPerson, txtRuc, txtRazonSocial, txtAddressJ, dgvPersonJ);
+            new FrmPersonJuridicaLogic().btnInsert_Click(txtIdPerson, txtRuc, erpRuc, txtRazonSocial, erpRazonSocial, txtAddressJ, dgvPersonJ);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

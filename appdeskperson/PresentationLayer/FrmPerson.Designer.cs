@@ -37,6 +37,13 @@
             this.txtIdPerson = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.dgvPerson = new System.Windows.Forms.DataGridView();
+            this.idPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.surName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yearOld = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.birthDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnInsert = new System.Windows.Forms.Button();
             this.dateBirthDate = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -52,27 +59,30 @@
             this.txtIdPersonJ = new System.Windows.Forms.TextBox();
             this.btnDeleteJ = new System.Windows.Forms.Button();
             this.dgvPersonJ = new System.Windows.Forms.DataGridView();
+            this.idPersonJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ruc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.razonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnInsertJ = new System.Windows.Forms.Button();
             this.txtRazonSocial = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtRuc = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.idPersonJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ruc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.razonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.surName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yearOld = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.birthDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.erpDni = new System.Windows.Forms.ErrorProvider(this.components);
+            this.erpFirstName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.erpSurName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.erpRuc = new System.Windows.Forms.ErrorProvider(this.components);
+            this.erpRazonSocial = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPersonNatural.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPerson)).BeginInit();
             this.tabPersonJuridica.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonJ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpDni)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpFirstName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpSurName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpRuc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpRazonSocial)).BeginInit();
             this.SuspendLayout();
             // 
             // imageList1
@@ -131,7 +141,7 @@
             this.txtAddressN.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtAddressN.MaxLength = 140;
             this.txtAddressN.Name = "txtAddressN";
-            this.txtAddressN.Size = new System.Drawing.Size(300, 20);
+            this.txtAddressN.Size = new System.Drawing.Size(284, 20);
             this.txtAddressN.TabIndex = 25;
             // 
             // txtIdPerson
@@ -153,6 +163,7 @@
             this.btnDelete.TabIndex = 23;
             this.btnDelete.Text = "Eliminar registro selec.";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // dgvPerson
             // 
@@ -181,6 +192,61 @@
             this.dgvPerson.Size = new System.Drawing.Size(681, 243);
             this.dgvPerson.TabIndex = 22;
             this.dgvPerson.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPerson_CellContentDoubleClick);
+            // 
+            // idPerson
+            // 
+            this.idPerson.HeaderText = "Id";
+            this.idPerson.MinimumWidth = 8;
+            this.idPerson.Name = "idPerson";
+            this.idPerson.ReadOnly = true;
+            this.idPerson.Visible = false;
+            this.idPerson.Width = 150;
+            // 
+            // dni
+            // 
+            this.dni.HeaderText = "DNI";
+            this.dni.MinimumWidth = 6;
+            this.dni.Name = "dni";
+            this.dni.ReadOnly = true;
+            this.dni.Width = 125;
+            // 
+            // firstName
+            // 
+            this.firstName.HeaderText = "Nombre";
+            this.firstName.MinimumWidth = 6;
+            this.firstName.Name = "firstName";
+            this.firstName.ReadOnly = true;
+            this.firstName.Width = 125;
+            // 
+            // surName
+            // 
+            this.surName.HeaderText = "Apellido";
+            this.surName.MinimumWidth = 6;
+            this.surName.Name = "surName";
+            this.surName.ReadOnly = true;
+            this.surName.Width = 125;
+            // 
+            // yearOld
+            // 
+            this.yearOld.HeaderText = "Edad";
+            this.yearOld.MinimumWidth = 6;
+            this.yearOld.Name = "yearOld";
+            this.yearOld.ReadOnly = true;
+            this.yearOld.Width = 125;
+            // 
+            // address
+            // 
+            this.address.HeaderText = "Direccion";
+            this.address.Name = "address";
+            this.address.ReadOnly = true;
+            // 
+            // birthDate
+            // 
+            this.birthDate.HeaderText = "Fecha nacimiento";
+            this.birthDate.MinimumWidth = 6;
+            this.birthDate.Name = "birthDate";
+            this.birthDate.ReadOnly = true;
+            this.birthDate.Width = 125;
             // 
             // btnInsert
             // 
@@ -217,7 +283,7 @@
             this.txtSurName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtSurName.MaxLength = 140;
             this.txtSurName.Name = "txtSurName";
-            this.txtSurName.Size = new System.Drawing.Size(163, 20);
+            this.txtSurName.Size = new System.Drawing.Size(147, 20);
             this.txtSurName.TabIndex = 18;
             // 
             // label3
@@ -236,7 +302,7 @@
             this.txtFirstName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtFirstName.MaxLength = 70;
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(120, 20);
+            this.txtFirstName.Size = new System.Drawing.Size(102, 20);
             this.txtFirstName.TabIndex = 16;
             // 
             // label2
@@ -255,7 +321,7 @@
             this.txtDni.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtDni.MaxLength = 8;
             this.txtDni.Name = "txtDni";
-            this.txtDni.Size = new System.Drawing.Size(97, 20);
+            this.txtDni.Size = new System.Drawing.Size(82, 20);
             this.txtDni.TabIndex = 14;
             // 
             // label1
@@ -294,7 +360,7 @@
             this.txtAddressJ.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtAddressJ.MaxLength = 70;
             this.txtAddressJ.Name = "txtAddressJ";
-            this.txtAddressJ.Size = new System.Drawing.Size(414, 20);
+            this.txtAddressJ.Size = new System.Drawing.Size(395, 20);
             this.txtAddressJ.TabIndex = 34;
             // 
             // label7
@@ -354,55 +420,6 @@
             this.dgvPersonJ.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dgvPersonJ.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPersonJ_CellContentDoubleClick);
             // 
-            // btnInsertJ
-            // 
-            this.btnInsertJ.Location = new System.Drawing.Point(458, 55);
-            this.btnInsertJ.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnInsertJ.Name = "btnInsertJ";
-            this.btnInsertJ.Size = new System.Drawing.Size(235, 27);
-            this.btnInsertJ.TabIndex = 29;
-            this.btnInsertJ.Text = "Registrar datos";
-            this.btnInsertJ.UseVisualStyleBackColor = true;
-            this.btnInsertJ.Click += new System.EventHandler(this.btnInsertJ_Click);
-            // 
-            // txtRazonSocial
-            // 
-            this.txtRazonSocial.Location = new System.Drawing.Point(134, 32);
-            this.txtRazonSocial.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.txtRazonSocial.MaxLength = 70;
-            this.txtRazonSocial.Name = "txtRazonSocial";
-            this.txtRazonSocial.Size = new System.Drawing.Size(120, 20);
-            this.txtRazonSocial.TabIndex = 28;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(132, 16);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 13);
-            this.label5.TabIndex = 27;
-            this.label5.Text = "Razon Social";
-            // 
-            // txtRuc
-            // 
-            this.txtRuc.Location = new System.Drawing.Point(20, 32);
-            this.txtRuc.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.txtRuc.MaxLength = 11;
-            this.txtRuc.Name = "txtRuc";
-            this.txtRuc.Size = new System.Drawing.Size(97, 20);
-            this.txtRuc.TabIndex = 26;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(18, 16);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(30, 13);
-            this.label6.TabIndex = 25;
-            this.label6.Text = "RUC";
-            // 
             // idPersonJ
             // 
             this.idPersonJ.HeaderText = "Id";
@@ -436,60 +453,74 @@
             this.addressJ.ReadOnly = true;
             this.addressJ.Width = 125;
             // 
-            // idPerson
+            // btnInsertJ
             // 
-            this.idPerson.HeaderText = "Id";
-            this.idPerson.MinimumWidth = 8;
-            this.idPerson.Name = "idPerson";
-            this.idPerson.ReadOnly = true;
-            this.idPerson.Visible = false;
-            this.idPerson.Width = 150;
+            this.btnInsertJ.Location = new System.Drawing.Point(439, 58);
+            this.btnInsertJ.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnInsertJ.Name = "btnInsertJ";
+            this.btnInsertJ.Size = new System.Drawing.Size(235, 27);
+            this.btnInsertJ.TabIndex = 29;
+            this.btnInsertJ.Text = "Registrar datos";
+            this.btnInsertJ.UseVisualStyleBackColor = true;
+            this.btnInsertJ.Click += new System.EventHandler(this.btnInsertJ_Click);
             // 
-            // dni
+            // txtRazonSocial
             // 
-            this.dni.HeaderText = "DNI";
-            this.dni.MinimumWidth = 6;
-            this.dni.Name = "dni";
-            this.dni.ReadOnly = true;
-            this.dni.Width = 125;
+            this.txtRazonSocial.Location = new System.Drawing.Point(135, 32);
+            this.txtRazonSocial.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtRazonSocial.MaxLength = 70;
+            this.txtRazonSocial.Name = "txtRazonSocial";
+            this.txtRazonSocial.Size = new System.Drawing.Size(102, 20);
+            this.txtRazonSocial.TabIndex = 28;
             // 
-            // firstName
+            // label5
             // 
-            this.firstName.HeaderText = "Nombre";
-            this.firstName.MinimumWidth = 6;
-            this.firstName.Name = "firstName";
-            this.firstName.ReadOnly = true;
-            this.firstName.Width = 125;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(132, 16);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 13);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Razon Social";
             // 
-            // surName
+            // txtRuc
             // 
-            this.surName.HeaderText = "Apellido";
-            this.surName.MinimumWidth = 6;
-            this.surName.Name = "surName";
-            this.surName.ReadOnly = true;
-            this.surName.Width = 125;
+            this.txtRuc.Location = new System.Drawing.Point(20, 32);
+            this.txtRuc.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtRuc.MaxLength = 11;
+            this.txtRuc.Name = "txtRuc";
+            this.txtRuc.Size = new System.Drawing.Size(82, 20);
+            this.txtRuc.TabIndex = 26;
             // 
-            // yearOld
+            // label6
             // 
-            this.yearOld.HeaderText = "Edad";
-            this.yearOld.MinimumWidth = 6;
-            this.yearOld.Name = "yearOld";
-            this.yearOld.ReadOnly = true;
-            this.yearOld.Width = 125;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(18, 16);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(30, 13);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "RUC";
             // 
-            // address
+            // erpDni
             // 
-            this.address.HeaderText = "Direccion";
-            this.address.Name = "address";
-            this.address.ReadOnly = true;
+            this.erpDni.ContainerControl = this;
             // 
-            // birthDate
+            // erpFirstName
             // 
-            this.birthDate.HeaderText = "Fecha nacimiento";
-            this.birthDate.MinimumWidth = 6;
-            this.birthDate.Name = "birthDate";
-            this.birthDate.ReadOnly = true;
-            this.birthDate.Width = 125;
+            this.erpFirstName.ContainerControl = this;
+            // 
+            // erpSurName
+            // 
+            this.erpSurName.ContainerControl = this;
+            // 
+            // erpRuc
+            // 
+            this.erpRuc.ContainerControl = this;
+            // 
+            // erpRazonSocial
+            // 
+            this.erpRazonSocial.ContainerControl = this;
             // 
             // FrmPerson
             // 
@@ -509,6 +540,11 @@
             this.tabPersonJuridica.ResumeLayout(false);
             this.tabPersonJuridica.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonJ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpDni)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpFirstName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpSurName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpRuc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpRazonSocial)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -553,5 +589,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn yearOld;
         private System.Windows.Forms.DataGridViewTextBoxColumn address;
         private System.Windows.Forms.DataGridViewTextBoxColumn birthDate;
+        private System.Windows.Forms.ErrorProvider erpDni;
+        private System.Windows.Forms.ErrorProvider erpFirstName;
+        private System.Windows.Forms.ErrorProvider erpSurName;
+        private System.Windows.Forms.ErrorProvider erpRuc;
+        private System.Windows.Forms.ErrorProvider erpRazonSocial;
     }
 }

@@ -47,9 +47,9 @@ namespace appdeskperson.PresentationLayer
             MessageBox.Show("No se pudo eliminar el registro.", "Error Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void btnInsert_Click(TextBox txtIdPerson, TextBox txtRuc, TextBox txtRazonSocial, TextBox txtAddressJ, DataGridView dgvPersonj) 
+        public void btnInsert_Click(TextBox txtIdPerson, TextBox txtRuc, ErrorProvider erpRuc, TextBox txtRazonSocial, ErrorProvider erpRazonSocial, TextBox txtAddressJ, DataGridView dgvPersonj) 
         {
-            if (!validateData(txtRuc, txtRazonSocial))
+            if (!validateData(txtRuc, erpRuc, txtRazonSocial, erpRazonSocial))
                 return;
 
             bool insert = txtIdPerson.Text == "";
@@ -110,24 +110,35 @@ namespace appdeskperson.PresentationLayer
             }
         }
 
-        private bool validateData(TextBox txtRuc, TextBox txtRazonSocial)
+        private bool validateData(TextBox txtRuc, ErrorProvider erpRuc, TextBox txtRazonSocial, ErrorProvider erpRazonSocial)
         {
+            bool valid = true;
             Regex rucRegex = new Regex(@"^\d{11}$");
-            Regex namesRegex = new Regex(@"^([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+)(\s+([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+))*$");
+            Regex razonRegex = new Regex(@"^([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+)(\s+([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+))*$");
 
             if (!rucRegex.IsMatch(txtRuc.Text))
             {
-                MessageBox.Show("Debe contener 11 numeros enteros, sin espacios", "Error en RUC", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                //MessageBox.Show("Debe contener 11 numeros enteros, sin espacios", "Error en RUC", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                erpRuc.SetError(txtRuc, "Debe contener 11 numeros enteros, sin espacios");
+                valid = false;
             }
-
-            if (!namesRegex.IsMatch(txtRazonSocial.Text))
+            else
             {
-                MessageBox.Show("Debe ser una palabra minimamente y no empezar con espacio en blanco o contener números", "Error en Nombre", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                erpRuc.SetError(txtRuc, "");
             }
 
-            return true;
+            if (!razonRegex.IsMatch(txtRazonSocial.Text))
+            {
+                //MessageBox.Show("Debe ser una palabra minimamente y no empezar con espacio en blanco o contener números", "Error en Nombre", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                erpRazonSocial.SetError(txtRazonSocial, "Debe ser una palabra minimamente y no empezar con espacio en blanco o contener números");
+                valid = false;
+            }
+            else
+            {
+                erpRazonSocial.SetError(txtRazonSocial, "");
+            }
+
+            return valid;
         }
 
         private void CleanForm(TextBox txtIdPerson, TextBox txtRuc, TextBox txtRazonSocial, TextBox txtAddressJ)

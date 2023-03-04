@@ -49,9 +49,9 @@ namespace appdeskperson.PresentationLayer
             MessageBox.Show("No se pudo eliminar el registro.", "Error Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void btnInsert_Click(TextBox txtIdPerson, TextBox txtDni, TextBox txtFirstName, TextBox txtSurName, DateTimePicker dateBirthDate, TextBox txtAddressN, DataGridView dgvPerson) 
+        public void btnInsert_Click(TextBox txtIdPerson, TextBox txtDni, ErrorProvider erpDni, TextBox txtFirstName, ErrorProvider erpFirstName, TextBox txtSurName, ErrorProvider erpSurName, DateTimePicker dateBirthDate, TextBox txtAddressN, DataGridView dgvPerson) 
         {
-            if (!validateData(txtDni, txtFirstName, txtSurName))
+            if (!validateData(txtDni, erpDni, txtFirstName, erpFirstName, txtSurName, erpSurName))
                 return;
 
             bool insert = txtIdPerson.Text == "";
@@ -117,30 +117,45 @@ namespace appdeskperson.PresentationLayer
             }
         }
 
-        private bool validateData(TextBox txtDni, TextBox txtFirstName, TextBox txtSurName)
+        private bool validateData(TextBox txtDni, ErrorProvider erpDni, TextBox txtFirstName, ErrorProvider erpFirstName, TextBox txtSurName, ErrorProvider erpSurName)
         {
+            bool valid = true;
             Regex dniRegex = new Regex(@"^\d{8}$");
             Regex namesRegex = new Regex(@"^([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+)(\s+([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+))*$");
 
             if (!dniRegex.IsMatch(txtDni.Text))
             {
-                MessageBox.Show("Debe contener 8 numeros enteros, sin espacios", "Error en DNI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                //MessageBox.Show("Debe contener 8 numeros enteros, sin espacios", "Error en DNI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                erpDni.SetError(txtDni, "Debe contener 8 numeros enteros, sin espacios");
+                valid = false;
             }
+            else {
+                erpDni.SetError(txtDni, "");
+            }
+
 
             if (!namesRegex.IsMatch(txtFirstName.Text))
             {
-                MessageBox.Show("Debe ser una palabra minimamente y no empezar con espacio en blanco o contener números", "Error en Nombre", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                //MessageBox.Show("Debe ser una palabra minimamente y no empezar con espacio en blanco o contener números", "Error en Nombre", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                erpFirstName.SetError(txtFirstName, "Debe ser una palabra minimamente y no empezar con espacio en blanco o contener números");
+                valid = false;
+            } 
+            else {
+                erpFirstName.SetError(txtFirstName, "");
             }
 
             if (!namesRegex.IsMatch(txtSurName.Text))
             {
-                MessageBox.Show("Puede ser mas de una palabra, sin espacio vacio al inicio, ni números", "Error en Apellido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                //MessageBox.Show("Puede ser mas de una palabra, sin espacio vacio al inicio, ni números", "Error en Apellido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                erpSurName.SetError(txtSurName, "Puede ser mas de una palabra, sin espacio vacio al inicio, ni números");
+                valid = false;
+            } else
+            {
+                erpSurName.SetError(txtSurName, "");
+
             }
 
-            return true;
+            return valid;
         }
 
         private void CleanForm(TextBox txtIdPerson, TextBox txtDni, TextBox txtFirstName, TextBox txtSurName, DateTimePicker dateBirthDate, TextBox txtAddressN)
