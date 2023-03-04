@@ -8,7 +8,9 @@ namespace appdeskperson.DataAccessLayer.Connection
     {
         public DataBaseContext() : base("connectionString") { }
 
-        public DbSet<Person> Persons { get; set; }
+        public DbSet<PersonNatural> PersonsNatural { get; set; }
+
+        public DbSet<PersonJuridica> PersonsJuridica { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

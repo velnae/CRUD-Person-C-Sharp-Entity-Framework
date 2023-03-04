@@ -33,10 +33,10 @@ namespace appdeskperson.PresentationLayer
                 return;
             }
 
-            DtoPerson dtoPerson = new DtoPerson();
+            DtoPersonNatural dtoPerson = new DtoPersonNatural();
             dtoPerson.idPerson = dgvPerson.CurrentRow.Cells["IdPerson"].Value.ToString();
 
-            if (new BusinessPerson().delete(dtoPerson) > 0)
+            if (new BusinessPersonNatural().delete(dtoPerson) > 0)
             {
                 showListPerson(dgvPerson);
                 CleanForm(txtIdPerson, txtDni, txtFirstName, txtSurName, dateBirthDate);
@@ -55,7 +55,7 @@ namespace appdeskperson.PresentationLayer
 
             bool insert = txtIdPerson.Text == "";
 
-            DtoPerson dtoPerson = new DtoPerson();
+            DtoPersonNatural dtoPerson = new DtoPersonNatural();
 
             dtoPerson.idPerson = txtIdPerson.Text;
             dtoPerson.dni = txtDni.Text;
@@ -65,7 +65,7 @@ namespace appdeskperson.PresentationLayer
 
             if (insert)
             {
-                if (new BusinessPerson().insert(dtoPerson) > 0)
+                if (new BusinessPersonNatural().insert(dtoPerson) > 0)
                 {
                     showListPerson(dgvPerson);
                     CleanForm(txtIdPerson, txtDni, txtFirstName, txtSurName, dateBirthDate);
@@ -78,7 +78,7 @@ namespace appdeskperson.PresentationLayer
             }
             else
             {
-                if (new BusinessPerson().update(dtoPerson) > 0)
+                if (new BusinessPersonNatural().update(dtoPerson) > 0)
                 {
                     showListPerson(dgvPerson);
                     CleanForm(txtIdPerson, txtDni, txtFirstName, txtSurName, dateBirthDate);
@@ -98,7 +98,7 @@ namespace appdeskperson.PresentationLayer
 
         private void showListPerson(DataGridView dgvPerson)
         {
-            List<DtoPerson> listDtoPerson = new BusinessPerson().getAll();
+            List<DtoPersonNatural> listDtoPerson = new BusinessPersonNatural().getAll();
             dgvPerson.Rows.Clear();
 
             for (int i = 0; i < listDtoPerson.Count; i++)

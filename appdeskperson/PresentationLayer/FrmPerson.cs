@@ -38,7 +38,25 @@ namespace appdeskperson.PresentationLayer
         private void FrmPerson_Load(object sender, EventArgs e)
         {
             new FrmPersonLogic().FrmPerson_Load(dgvPerson);
+            new FrmPersonJuridicaLogic().FrmPerson_Load(dgvPersonJ);
         }
 
+        #region Persona juridica
+        private void btnInsertJ_Click(object sender, EventArgs e)
+        {
+            new FrmPersonJuridicaLogic().btnInsert_Click(txtIdPerson, txtRuc, txtRazonSocial, txtAddressJ, dgvPersonJ);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        #endregion Persona juridica
+
+        private void dgvPersonJ_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            new FrmPersonJuridicaLogic().dgvPerson_MouseDoubleClick(dgvPersonJ, txtIdPerson, txtRuc, txtRazonSocial, txtAddressJ);
+        }
     }
 }

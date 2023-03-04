@@ -265,10 +265,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLayer\BusinessPersonJuridica.cs" />
+    <Compile Include="BusinessLayer\BusinessPersonNatural.cs" />
     <Compile Include="BusinessLayer\BusinessPerson.cs" />
     <Compile Include="DataAccessLayer\Connection\DataBaseContext.cs" />
     <Compile Include="DataAccessLayer\Entities\Person.cs" />
+    <Compile Include="DataAccessLayer\Entities\PersonJuridica.cs" />
+    <Compile Include="DataAccessLayer\Entities\PersonNatural.cs" />
+    <Compile Include="DataAccessLayer\Queries\QPersonJuridica.cs" />
+    <Compile Include="DataAccessLayer\Queries\QPersonNatural.cs" />
     <Compile Include="DataAccessLayer\Queries\QPerson.cs" />
+    <Compile Include="DataTransferLayer\DtoPersonJuridica.cs" />
+    <Compile Include="DataTransferLayer\DtoPersonNatural.cs" />
     <Compile Include="DataTransferLayer\DtoPerson.cs" />
     <Compile Include="PresentationLayer\FrmPerson.cs">
       <SubType>Form</SubType>
@@ -276,6 +284,7 @@
     <Compile Include="PresentationLayer\FrmPerson.Designer.cs">
       <DependentUpon>FrmPerson.cs</DependentUpon>
     </Compile>
+    <Compile Include="PresentationLayer\FrmPersonJuridicaLogic.cs" />
     <Compile Include="PresentationLayer\FrmPersonLogic.cs" />
     <Compile Include="PresentationLayer\MDIParent.cs">
       <SubType>Form</SubType>
